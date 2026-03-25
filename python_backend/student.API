@@ -1,0 +1,28 @@
+from flask import Flask,request,jsonify
+import joblib
+model = joblib.load('C:\\dev\\other_project\\first_app\\python_backend\\logistic_model.joblib')
+app=Flask(__name__)
+@app.route('/predict',methods=['post'])
+def prediction():
+    data=request.json
+    study_hours=data['study_hours']
+    self_study=data['self_study']
+    online_classes_hours=data['online_classes_hours']
+    mental_health_score=data['mental_health_score']
+    exam_score_prob=model.predict_proba([[study_hours,self_study, online_classes_hours,mental_health_score]])[0][1]
+    fail_prob=1-exam_score_prob
+    alerts=[]
+    if study_hours<3:alerts.append("study hours are very low")
+    if self_study<2:alerts.append("self study hours are very low")
+    if online_classes_hours<3:alerts.append("online classes are short")
+    if mental_health_score<5:alerts.append("check on your mental health")
+    if exam_score_prob<0.5:alerts.append("risk of failing")
+    return jsonify({
+        "exam_score_prob":exam_score_prob,
+        "fail_prob":fail_prob,
+        "alerts":alerts
+    })
+if __name__=='__main__':
+    app.run(debug=True)
+
+
