@@ -1,0 +1,48 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# requirements.txt  —  EduPredict API
+#
+# Install:
+#   pip install -r requirements.txt
+#
+# Render only needs the [API] group to serve predictions.
+# The [Training] group is only used locally for train_model.py.
+# All are listed here so one command installs everything.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── [API] Required on Render to serve predictions ─────────────────────────────
+flask==3.1.2
+werkzeug==3.1.5
+gunicorn==25.2.0
+joblib==1.5.3
+scikit-learn==1.8.0
+numpy==2.4.2
+
+# Flask internal dependencies
+blinker==1.9.0
+click==8.3.1
+itsdangerous==2.2.0
+jinja2==3.1.6
+markupsafe==3.0.3
+
+# Gunicorn dependency
+packaging==26.0
+
+# scikit-learn dependency
+threadpoolctl==3.6.0
+scipy==1.17.0
+
+# ── [Training] Local only — used by train_model.py ───────────────────────────
+pandas==3.0.1
+matplotlib==3.10.8
+
+# Pandas dependency
+python-dateutil==2.9.0.post0
+six==1.17.0
+
+# Matplotlib dependencies
+contourpy==1.3.3
+cycler==0.12.1
+fonttools==4.61.1
+kiwisolver==1.4.9
+pillow==12.1.1
+pyparsing==3.3.2
