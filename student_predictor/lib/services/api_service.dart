@@ -63,7 +63,7 @@ class ApiService {
   // ── Set your backend URL here ──────────────────────────────────────────────
   // Android emulator  →  http://10.0.2.2:5000
   // iOS simulator     →  http://localhost:5000
-  // Physical device   →  http://<YOUR_PC_IP>:5000
+  // Physical device   →  http://<YOUR_PC_IP>:5000 i.e http:172.31.0.217:5000
   static const String baseUrl = 'https://edupredict-4.onrender.com';
 
   static Future<PredictionResult> predict(StudentData data) async {
